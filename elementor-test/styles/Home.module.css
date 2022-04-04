@@ -1,0 +1,21 @@
+.container{
+    padding: 0;
+}
+.wrapper{
+    position: relative;
+}
+.header{
+    position: relative;
+}
+.title{
+    position: relative
+}
+.text{
+    position: relative;
+}
+.content{
+    position: relative;
+}
+.footer{
+    position: relative;
+}
