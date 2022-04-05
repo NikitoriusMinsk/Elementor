@@ -1,20 +1,28 @@
 {
     "main" : {
         "name": "wrapper",
-        "key": "wrapper",
+        "props": {
+            "key": "wrapper"
+        },
         "children": [
             {
                 "name": "header",
-                "key": "header",
+                "props": {
+                    "key": "header"
+                },
                 "children": [
                     {
                         "name": "title",
-                        "key": "title",
+                        "props": {
+                            "key": "title"
+                        },
                         "children": [
                             {
                                 "name": "text",
-                                "key": "text1",
-                                "text": "Main Header"
+                                "props": {
+                                    "key": "text1"
+                                },
+                                "children": "Main Header"
                             }
                         ]
                     }
@@ -22,23 +30,31 @@
             },
             {
                 "name": "content",
-                "key": "content",
+                "props": {
+                    "key": "content"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text2",
-                        "text": "Main Content"
+                        "props": {
+                            "key": "text2"
+                        },
+                        "children": "Main Content"
                     }
                 ]
             },
             {
                 "name": "footer",
-                "key": "footer",
+                "props": {
+                    "key": "footer"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text3",
-                        "text": "Main Footer"
+                        "props": {
+                        "key": "text3"
+                    },
+                        "children": "Main Footer"
                     }
                 ]
             }
@@ -46,20 +62,28 @@
     },
     "info": {
         "name": "wrapper",
-        "key": "wrapper",
+        "props": {
+            "key": "wrapper"
+        },
         "children": [
             {
                 "name": "header",
-                "key": "header",
+                "props": {
+                    "key": "header"
+                },
                 "children": [
                     {
                         "name": "title",
-                        "key": "title",
+                        "props": {
+                            "key": "title"
+                        },
                         "children": [
                             {
                                 "name": "text",
-                                "key": "text1",
-                                "text": "Info Header"
+                                "props": {
+                                    "key": "text1"
+                                },
+                                "children": "Info Header"
                             }
                         ]
                     }
@@ -67,23 +91,31 @@
             },
             {
                 "name": "content",
-                "key": "content",
+                "props": {
+                    "key": "content"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text2",
-                        "text": "Info Content"
+                        "props": {
+                            "key": "text2"
+                        },
+                        "children": "Info Content"
                     }
                 ]
             },
             {
                 "name": "footer",
-                "key": "footer",
+                "props": {
+                    "key": "footer"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text3",
-                        "text": "Info Footer"
+                        "props": {
+                            "key": "text3"
+                        },
+                        "children": "Info Footer"
                     }
                 ]
             }
@@ -91,20 +123,28 @@
     },
     "blog": {
         "name": "wrapper",
-        "key": "wrapper",
+        "props": {
+            "key": "wrapper"
+        },
         "children": [
             {
                 "name": "header",
-                "key": "header",
+                "props": {
+                    "key": "header"
+                },
                 "children": [
                     {
                         "name": "title",
-                        "key": "title",
+                        "props": {
+                            "key": "title"
+                        },
                         "children": [
                             {
                                 "name": "text",
-                                "key": "text1",
-                                "text": "Blog Header"
+                                "props": {
+                                    "key": "text1"
+                                },
+                                "children": "Blog Header"
                             }
                         ]
                     }
@@ -112,23 +152,31 @@
             },
             {
                 "name": "content",
-                "key": "content",
+                "props": {
+                    "key": "content"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text2",
-                        "text": "Blog Content"
+                        "props": {
+                            "key": "text2"
+                        },
+                        "children": "Blog Content"
                     }
                 ]
             },
             {
                 "name": "footer",
-                "key": "footer",
+                "props": {
+                    "key": "footer"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text3",
-                        "text": "Blog Footer"
+                        "props": {
+                            "key": "text3"
+                        },
+                        "children": "Blog Footer"
                     }
                 ]
             }
@@ -136,20 +184,28 @@
     },
     "ISR": {
         "name": "wrapper",
-        "key": "wrapper",
+        "props": {
+            "key": "wrapper"
+        },
         "children": [
             {
                 "name": "header",
-                "key": "header",
+                "props": {
+                    "key": "header"
+                },
                 "children": [
                     {
                         "name": "title",
-                        "key": "title",
+                        "props": {
+                            "key": "title"
+                        },
                         "children": [
                             {
                                 "name": "text",
-                                "key": "text1",
-                                "text": "ISR Header"
+                                "props": {
+                                "key": "text1"
+                            },
+                                "children": "ISR Header"
                             }
                         ]
                     }
@@ -157,23 +213,31 @@
             },
             {
                 "name": "content",
-                "key": "content",
+                "props": {
+                    "key": "content"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text2",
-                        "text": "ISR Content"
+                        "props": {
+                            "key": "text2"
+                        },
+                        "children": "ISR Content"
                     }
                 ]
             },
             {
                 "name": "footer",
-                "key": "footer",
+                "props": {
+                    "key": "footer"
+                },
                 "children": [
                     {
                         "name": "text",
-                        "key": "text3",
-                        "text": "ISR Footer"
+                        "props": {
+                            "key": "text3"
+                        },
+                        "children": "ISR Footer"
                     }
                 ]
             }

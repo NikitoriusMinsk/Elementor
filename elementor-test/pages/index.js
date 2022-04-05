@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import React from 'react'
-import renderNode from '../functions/renderNode'
+import {renderNodeWithReact} from '../functions/renderNode'
 
 const structure = {
     name: 'wrapper',
@@ -8,16 +8,22 @@ const structure = {
     children: [
         {
             name: 'header',
-            key: 'header',
+            props: {
+                key:'header',
+            },
             children: [
                 {
                     name: 'title',
-                    key: 'title',
+                    props: {
+                        key:'title',
+                    },
                     children: [
                         {
                             name: 'text',
-                            key: 'text1',
-                            text: 'I am a header!'
+                            props: {
+                                key:'text1',
+                            },
+                            children: 'I am a header!'
                         }
                     ]
                 }
@@ -25,21 +31,31 @@ const structure = {
         },
         {
             name: 'content',
+            props: {
+                key:'content',
+            },
             children: [
                 {
                     name: 'text',
-                    key: 'text2',
-                    text: 'I am a body!'
+                    props: {
+                        key:'text2',
+                    },
+                    children: 'I am a body!'
                 },
             ]
         },
         {
             name: 'footer',
+            props: {
+                key:'footer',
+            },
             children: [
                 {
                     name: 'text',
-                    key: 'text3',
-                    text: 'I am a footer!'
+                    props: {
+                        key:'text3',
+                    },
+                    children: 'I am a footer!'
                 },
             ]
         }
@@ -50,7 +66,7 @@ export default function Home() {
 
     return (
         <div className={styles.container}>
-            {renderNode(structure)}
+            {renderNodeWithReact(structure)}
         </div>
     )
 }

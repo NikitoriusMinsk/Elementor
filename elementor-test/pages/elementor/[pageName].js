@@ -1,10 +1,10 @@
 import React from 'react'
-import renderNode from '/functions/renderNode'
+import { renderNodeWithReact } from '/functions/renderNode'
 
 export default function customPage({ page }) {
   return (
     <div>
-        {renderNode(page)}
+        {renderNodeWithReact(page)}
     </div>
   )
 }

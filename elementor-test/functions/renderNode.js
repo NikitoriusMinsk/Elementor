@@ -1,6 +1,22 @@
+import React from 'react'
+import Content from '../components/Content'
+import Footer from '../components/Footer'
+import Header from '../components/header'
+import Text from '../components/Text'
+import Title from '../components/Title'
+import Wrapper from '../components/wrapper'
 import styles from '../styles/Home.module.css'
 
-export default function renderNode(node) {
+const Components= {
+    content: Content,
+    footer: Footer,
+    header: Header,
+    text: Text,
+    title: Title,
+    wrapper: Wrapper
+}
+
+export function renderNode(node) {
     switch (node.name) {
         case 'wrapper':
             return <div className={styles.wrapper} key={node.key}>{node.children.map(renderNode)}</div>
@@ -17,4 +33,20 @@ export default function renderNode(node) {
         default:
             return null
     }
+}
+
+export function renderNodeWithReact(node){
+    if (node === undefined) return
+    return React.createElement(
+        Components[node.name], 
+        {
+            ...node.props
+        }, 
+        node.children && 
+            (
+                typeof node.children === 'string' 
+                ? node.children 
+                : node.children.map(renderNodeWithReact)
+            )
+    )
 }
