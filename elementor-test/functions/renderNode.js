@@ -1,20 +1,11 @@
 import React from 'react'
-import Content from '../components/Content'
-import Footer from '../components/Footer'
-import Header from '../components/header'
-import Text from '../components/Text'
-import Title from '../components/Title'
-import Wrapper from '../components/wrapper'
+import * as ComponentsImport from '../components'
 import styles from '../styles/Home.module.css'
 
-const Components= {
-    content: Content,
-    footer: Footer,
-    header: Header,
-    text: Text,
-    title: Title,
-    wrapper: Wrapper
-}
+//convert file name keys to lower case (might not need this in the future)
+const Components = Object.fromEntries(
+    Object.entries(ComponentsImport).map(([key, value]) => [key.toLowerCase(), value])
+);
 
 export function renderNode(node) {
     switch (node.name) {
@@ -36,17 +27,18 @@ export function renderNode(node) {
 }
 
 export function renderNodeWithReact(node){
-    if (node === undefined && Components[node.name]) return
-    return React.createElement(
-        Components[node.name], 
-        {
-            ...node.props
-        }, 
-        node.children && 
-            (
-                typeof node.children === 'string' 
-                ? node.children 
-                : node.children.map(renderNodeWithReact)
-            )
-    )
+    if (node !== undefined && Components[node.name]) {
+        return React.createElement(
+            Components[node.name], 
+            {
+                ...node.props
+            }, 
+            node.children && 
+                (
+                    typeof node.children === 'string' 
+                    ? node.children 
+                    : node.children.map(renderNodeWithReact)
+                )
+        )
+    }
 }
