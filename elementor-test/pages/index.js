@@ -1,10 +1,15 @@
 import styles from '../styles/Home.module.css'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import renderNode from '../functions/renderNode'
+import treeToJSON from '../functions/treeToJSON'
+import TestRenderer from 'react-test-renderer'
 
 const structure = {
     name: 'wrapper',
-    key: 'wrapper',
+    props: {
+        key: 'wrapper',
+        author: 'hello!'
+    },
     children: [
         {
             name: 'header',
@@ -30,43 +35,33 @@ const structure = {
             ]
         },
         {
-            name: 'content',
+            name: 'text',
             props: {
-                key:'content',
+                key:'text2',
             },
-            children: [
-                {
-                    name: 'text',
-                    props: {
-                        key:'text2',
-                    },
-                    children: 'I am a body!'
-                },
-            ]
-        },
-        {
-            name: 'footer',
-            props: {
-                key:'footer',
-            },
-            children: [
-                {
-                    name: 'text',
-                    props: {
-                        key:'text3',
-                    },
-                    children: 'I am a footer!'
-                },
-            ]
+            children: 'I am a text!'
         }
     ]
 }
 
 export default function Home() {
+    const [pageContent, setPageContent] = useState();
+    const [pageContent2, setPageContent2] = useState();
+
+    useEffect(() => {
+        setPageContent(renderNode(structure))
+    },[])
+
+    useEffect(() => {
+        const tree = TestRenderer.create(pageContent).toTree();
+        const structure2 = tree && treeToJSON(tree);
+        tree && setPageContent2(renderNode(structure2));
+    }, [pageContent])
 
     return (
         <div className={styles.container}>
-            {renderNode(structure)}
+            {pageContent}
+            {pageContent2}
         </div>
     )
 }
