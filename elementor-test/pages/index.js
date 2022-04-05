@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import React from 'react'
-import {renderNodeWithReact} from '../functions/renderNode'
+import renderNode from '../functions/renderNode'
 
 const structure = {
     name: 'wrapper',
@@ -66,7 +66,7 @@ export default function Home() {
 
     return (
         <div className={styles.container}>
-            {renderNodeWithReact(structure)}
+            {renderNode(structure)}
         </div>
     )
 }
