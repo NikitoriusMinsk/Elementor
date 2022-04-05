@@ -36,7 +36,7 @@ export function renderNode(node) {
 }
 
 export function renderNodeWithReact(node){
-    if (node === undefined) return
+    if (node === undefined && Components[node.name]) return
     return React.createElement(
         Components[node.name], 
         {
