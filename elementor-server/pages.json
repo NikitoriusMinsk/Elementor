@@ -20,9 +20,9 @@
                             {
                                 "name": "text",
                                 "props": {
-                                    "key": "text1"
-                                },
-                                "children": "Main Header! asdgaigsdfiug"
+                                    "key": "text1",
+                                    "text": "Main Header!"
+                                }
                             }
                         ]
                     }
@@ -37,9 +37,9 @@
                     {
                         "name": "text",
                         "props": {
-                            "key": "text2"
-                        },
-                        "children": "Main Content"
+                            "key": "text2",
+                            "text": "Main Content!"
+                        }
                     }
                 ]
             },
@@ -52,9 +52,9 @@
                     {
                         "name": "text",
                         "props": {
-                        "key": "text3"
-                    },
-                        "children": "Main Footer"
+                            "key": "text3",
+                            "text": "Main Footer"
+                        }
                     }
                 ]
             }
@@ -81,9 +81,9 @@
                             {
                                 "name": "text",
                                 "props": {
-                                    "key": "text1"
-                                },
-                                "children": "Info Header"
+                                    "key": "text1",
+                                    "text": "Info Header!"
+                                }
                             }
                         ]
                     }
@@ -98,9 +98,9 @@
                     {
                         "name": "text",
                         "props": {
-                            "key": "text2"
-                        },
-                        "children": "Info Content"
+                            "key": "text2",
+                            "text": "Info Content"
+                        }
                     }
                 ]
             },
@@ -113,9 +113,9 @@
                     {
                         "name": "text",
                         "props": {
-                            "key": "text3"
-                        },
-                        "children": "Info Footer"
+                            "key": "text3",
+                            "text": "Info Footer"
+                        }
                     }
                 ]
             }
@@ -142,9 +142,9 @@
                             {
                                 "name": "text",
                                 "props": {
-                                    "key": "text1"
-                                },
-                                "children": "Blog Header"
+                                    "key": "text1",
+                                    "text": "Blog Header!"
+                                }
                             }
                         ]
                     }
@@ -159,9 +159,9 @@
                     {
                         "name": "text",
                         "props": {
-                            "key": "text2"
-                        },
-                        "children": "Blog Content"
+                            "key": "text2",
+                            "text": "Blog Content!"
+                        }
                     }
                 ]
             },
@@ -174,9 +174,9 @@
                     {
                         "name": "text",
                         "props": {
-                            "key": "text3"
-                        },
-                        "children": "Blog Footer"
+                            "key": "text3",
+                            "text": "Blog Footer!"
+                        }
                     }
                 ]
             }
@@ -203,9 +203,9 @@
                             {
                                 "name": "text",
                                 "props": {
-                                "key": "text1"
-                            },
-                                "children": "ISR Header"
+                                    "key": "text1",
+                                    "text": "ISR Header"
+                                }
                             }
                         ]
                     }
@@ -220,9 +220,9 @@
                     {
                         "name": "text",
                         "props": {
-                            "key": "text2"
-                        },
-                        "children": "ISR Content"
+                            "key": "text2",
+                            "text": "ISR Content"
+                        }
                     }
                 ]
             },
@@ -235,9 +235,9 @@
                     {
                         "name": "text",
                         "props": {
-                            "key": "text3"
-                        },
-                        "children": "ISR Footer"
+                            "key": "text3",
+                            "text": "ISR Footer"
+                        }
                     }
                 ]
             }
