@@ -1,5 +1,5 @@
 export default function treeToJSON(element){
-    if(typeof element.type !== 'string'){
+    if(element && typeof element.type !== 'string'){
         const result = {
             name: element.type.name.toLowerCase(),
             props: { ...element.props },

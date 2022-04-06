@@ -1,24 +1,82 @@
 .container{
     padding: 0;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    flex: 1;
 }
+.pageWrap{
+    display: flex;
+    flex-direction: row;
+    gap: 3px
+}
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 200px;
+    gap: 5px;
+}
+.dragComponent{
+    cursor: grab;
+    border: 1px solid black;
+    text-align: center;
+}
+.dragArea{
+    border: 1px solid aqua;
+    width: 100%;
+    height: 50px;
+    background-color: aliceblue;
+}
+.editorWrap{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+
 .wrapper{
     position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+    padding: 5px;
+    gap: 1px;
 }
 .header{
     position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 25px;
+    border: 1px solid orange;
 }
 .title{
-    position: relative
+    position: relative;
+    display: flex;
+    min-height: 25px;
+    border: 1px solid orange;
 }
 .text{
     position: relative;
+    display: flex;
+    min-height: 25px;
+    border: 1px solid orange;
 }
 .content{
     position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 25px;
+    border: 1px solid orange;
 }
 .footer{
     position: relative;
+    width: 100%;
+    min-height: 25px;
+    border: 1px solid orange;
+}
+.edit{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid red;
 }

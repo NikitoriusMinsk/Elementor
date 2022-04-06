@@ -1,8 +1,11 @@
 import styles from '../styles/Home.module.css'
 import React from 'react'
 
-export default function Text({ children }) {
+export default function Text({ children, edit }) {
     return (
-        <p className={styles.text}>{children}</p>
+        <span className={styles.text}>
+            {edit && <div className={styles.edit}> I am text! </div>}
+            {children}
+        </span>
     )
 }
