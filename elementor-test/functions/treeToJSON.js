@@ -8,6 +8,7 @@ export default function treeToJSON(element){
                 : element.rendered.rendered[0]
         }
         delete result.props.children;
+        delete result.props.edit;
         //purge children array from "undefined" elements
         //"undefined" elements appear when a non-component node is parsed
         //might need to fix that in the future
