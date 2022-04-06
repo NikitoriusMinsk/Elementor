@@ -25,12 +25,19 @@ export default function Footer({ children, edit, uuid }) {
             },
             children: []
         };
-        findChild(context.structure.current, uuid).children.push(component);
+        const {child, parent} = findChild(context.structure.current, uuid)
+        child.children.push(component);
         context.setPageContent(renderNode(context.structure.current, true));
     }
 
+    function handleDelete(){
+        const {child, parent} = findChild(context.structure.current, uuid)
+        parent.children = parent.children.filter(child => child.props.key !== uuid)
+        context.setPageContent(renderNode(context.structure.current, true))
+    }
+
     return (
-        <footer className={styles.footer} onDragOver={allowDrop} onDrop={drop}>
+        <footer className={styles.footer} onClick={handleDelete} onDragOver={allowDrop} onDrop={drop}>
             {edit && <div className={styles.edit}> I am footer! </div>}
             {children}
         </footer>

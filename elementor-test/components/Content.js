@@ -25,12 +25,19 @@ export default function Content({ children, edit, uuid }) {
             },
             children: []
         };
-        findChild(context.structure.current, uuid).children.push(component);
+        const {child, parent} = findChild(context.structure.current, uuid)
+        child.children.push(component);
         context.setPageContent(renderNode(context.structure.current, true));
     }
 
+    function handleDelete(){
+        const {child, parent} = findChild(context.structure.current, uuid)
+        parent.children = parent.children.filter(child => child.props.key !== uuid)
+        context.setPageContent(renderNode(context.structure.current, true))
+    }
+
     return (
-        <div className={styles.content} onDragOver={edit && allowDrop} onDrop={edit && drop}>
+        <div className={styles.content} onClick={handleDelete} onDragOver={edit && allowDrop} onDrop={edit && drop}>
             {edit && <div className={styles.edit}> I am content! </div>}
             {children}
         </div>

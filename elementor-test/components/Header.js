@@ -25,12 +25,19 @@ export default function Header({ children, edit, uuid }) {
             },
             children: []
         };
-        findChild(context.structure.current, uuid).children.push(component);
+        const {child, parent} = findChild(context.structure.current, uuid)
+        child.children.push(component);
         context.setPageContent(renderNode(context.structure.current, true));
     }
 
+    function handleDelete(){
+        const {child, parent} = findChild(context.structure.current, uuid)
+        parent.children = parent.children.filter(child => child.props.key !== uuid)
+        context.setPageContent(renderNode(context.structure.current, true))
+    }
+
     return (
-        <header className={styles.header} onDragOver={edit && allowDrop} onDrop={edit && drop}>
+        <header className={styles.header} onClick={handleDelete} onDragOver={edit && allowDrop} onDrop={edit && drop}>
             {edit && <div className={styles.edit}> I am header! </div>}
             {children}
         </header>
