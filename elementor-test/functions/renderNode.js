@@ -8,7 +8,6 @@ const Components = Object.fromEntries(
 
 export default function renderNode(node, edit = false){
     if (node !== undefined && Components[node.name]) {
-        console.log(edit, node.name)
         return React.createElement(
             Components[node.name], 
             {

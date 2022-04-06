@@ -54,19 +54,23 @@
     display: flex;
     min-height: 25px;
     border: 1px solid orange;
+    min-width: 150px;
 }
 .text{
     position: relative;
     display: flex;
     min-height: 25px;
     border: 1px solid orange;
+    min-width: 150px;
 }
 .content{
     position: relative;
     display: flex;
+    flex-direction: column;
     width: 100%;
     min-height: 25px;
     border: 1px solid orange;
+    padding: 25px;
 }
 .footer{
     position: relative;
@@ -79,4 +83,6 @@
     top: 0;
     right: 0;
     border: 1px solid red;
+    font-size: 16px;
+    font-weight: 400;
 }

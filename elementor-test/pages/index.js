@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
 import renderNode from '../functions/renderNode'
 import treeToJSON from '../functions/treeToJSON'
 import TestRenderer from 'react-test-renderer'
@@ -18,9 +18,11 @@ const initialStructure = {
     children: []
 }
 
+export const PageContext = createContext()
+
 export default function Home() {
     const structure = useRef(initialStructure)
-    const [pageContent, setPageContent] = useState();
+    const [pageContent, setPageContent] = useState()
     const container = <div className={styles.container}> {pageContent} </div>
 
     function allowDrop(e){
@@ -33,10 +35,12 @@ export default function Home() {
 
     function drop(e){
         e.preventDefault();
+        const key = uuid();
         const component = {
             name: e.dataTransfer.getData('component'),
             props: {
-                key: uuid(),
+                key: key,
+                uuid: key
             },
             children: []
         };
@@ -47,7 +51,7 @@ export default function Home() {
     // useEffect(() => {
     //     const tree = TestRenderer.create(container).toTree()
     //     if (tree.props.children[1]){
-    //         console.log('tree',tree)
+    //         // console.log('tree', tree.rendered[1])
     //         console.log('JSON',treeToJSON(tree.rendered[1]))
     //     }
     // }, [pageContent])
@@ -59,7 +63,9 @@ export default function Home() {
     return (
         <div className={styles.pageWrap}>
             <div className={styles.editorWrap}>
-            {container}
+                <PageContext.Provider value={{structure, setPageContent}}>
+                    {container}
+                </PageContext.Provider>
                 <div 
                     className={styles.dragArea}
                     onDragOver={allowDrop} 
