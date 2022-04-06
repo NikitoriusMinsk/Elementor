@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, useEffect, useRef, useState } from 'react'
 import renderNode from '../functions/renderNode'
 import treeToJSON from '../functions/treeToJSON'
 import TestRenderer from 'react-test-renderer'
