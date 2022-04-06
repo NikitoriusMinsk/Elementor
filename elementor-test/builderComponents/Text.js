@@ -8,7 +8,12 @@ export default function Text({ children, edit, uuid }) {
 
     return (
         <span className={styles.text}>
-            {edit && <div className={styles.edit} onClick={() => handleDelete(context, uuid)}> I am text! </div>}
+            {
+                edit && <div className={styles.edit} > 
+                    <span onClick={() => handleDelete(context, uuid)}>Delete</span>
+                    <span>Edit</span>    
+                </div>
+            }
             {children}
         </span>
     )

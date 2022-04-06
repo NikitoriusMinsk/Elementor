@@ -9,7 +9,12 @@ export default function Footer({ children, edit, uuid }) {
 
     return (
         <footer className={styles.footer} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
-            {edit && <div className={styles.edit} onClick={() => handleDelete(context, uuid)}> I am footer! </div>}
+            {
+                edit && <div className={styles.edit} > 
+                    <span onClick={() => handleDelete(context, uuid)}>Delete</span>
+                    <span>Edit</span>    
+                </div>
+            }
             {children}
         </footer>
     )

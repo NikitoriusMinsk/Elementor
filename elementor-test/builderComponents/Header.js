@@ -9,7 +9,12 @@ export default function Header({ children, edit, uuid }) {
 
     return (
         <header className={styles.header} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
-            {edit && <div className={styles.edit} onClick={() => handleDelete(context, uuid)}> I am header! </div>}
+            {
+                edit && <div className={styles.edit} > 
+                    <span onClick={() => handleDelete(context, uuid)}>Delete</span>
+                    <span>Edit</span>    
+                </div>
+            }
             {children}
         </header>
     )

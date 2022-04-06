@@ -8,7 +8,12 @@ export default function Title({ children, edit, uuid }) {
 
     return (
         <h1 className={styles.title}>
-            {edit && <div className={styles.edit} onClick={() => handleDelete(context, uuid)}> I am title! </div>}
+            {
+                edit && <div className={styles.edit} > 
+                    <span onClick={() => handleDelete(context, uuid)}>Delete</span>
+                    <span>Edit</span>    
+                </div>
+            }
             {children}
         </h1>
     )

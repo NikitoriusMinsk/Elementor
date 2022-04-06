@@ -1,5 +1,5 @@
 import React from 'react'
-import * as ComponentsImport from '../components'
+import * as ComponentsImport from '../builderComponents'
 
 //convert file name keys to lower case (might not need this in the future)
 const Components = Object.fromEntries(
@@ -12,7 +12,8 @@ export default function renderNode(node, edit = false){
             Components[node.name], 
             {
                 ...node.props,
-                edit: edit
+                edit: edit,
+                key: node.props.uuid
             }, 
             node.children && 
                 (

@@ -9,7 +9,12 @@ export default function Content({ children, edit, uuid }) {
 
     return (
         <div className={styles.content} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
-            {edit && <div className={styles.edit} onClick={() => handleDelete(context, uuid)}> I am content! </div>}
+            {
+                edit && <div className={styles.edit} > 
+                    <span onClick={() => handleDelete(context, uuid)}>Delete</span>
+                    <span>Edit</span>    
+                </div>
+            }
             {children}
         </div>
     )

@@ -4,7 +4,7 @@ import renderNode from '../functions/renderNode'
 import treeToJSON from '../functions/treeToJSON'
 import TestRenderer from 'react-test-renderer'
 import {v4 as uuid} from 'uuid'
-import * as ComponentsImport from '../components'
+import * as ComponentsImport from '../builderComponents'
 
 const Components = Object.fromEntries(
     Object.entries(ComponentsImport).map(([key, value]) => [key.toLowerCase(), value])

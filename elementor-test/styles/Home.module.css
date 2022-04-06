@@ -32,7 +32,11 @@
     flex-direction: column;
     flex: 1;
 }
-
+.preview{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
 .wrapper{
     position: relative;
@@ -82,7 +86,13 @@
     position: absolute;
     top: 0;
     right: 0;
-    border: 1px solid red;
     font-size: 16px;
     font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+}
+.edit span{
+    border: 1px solid red;
+    cursor: pointer;
 }
