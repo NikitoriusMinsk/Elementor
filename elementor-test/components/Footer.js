@@ -1,10 +1,7 @@
 import styles from '../styles/Home.module.css'
 import React, { useContext } from 'react'
-import { v4 as generateUUID } from 'uuid';
 import { PageContext } from '../pages';
-import findChild from '../functions/findChild';
-import renderNode from '../functions/renderNode';
-import { onDragOver } from '../functions/DragAndDrop';
+import { onDragOver, onDrop } from '../functions/DragAndDrop';
 import { handleDelete } from '../functions/handleDelete';
 
 export default function Footer({ children, edit, uuid }) {

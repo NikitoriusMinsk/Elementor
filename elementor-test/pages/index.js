@@ -23,6 +23,7 @@ export const PageContext = createContext()
 export default function Home() {
     const structure = useRef(initialStructure)
     const [pageContent, setPageContent] = useState()
+    const [page2, setPage2] = useState()
     const container = <div className={styles.container}> {pageContent} </div>
 
     function allowDrop(e){
@@ -48,44 +49,50 @@ export default function Home() {
         setPageContent(renderNode(structure.current, true));
     }
 
-    // useEffect(() => {
-    //     const tree = TestRenderer.create(container).toTree()
-    //     if (tree.props.children[1]){
-    //         // console.log('tree', tree.rendered[1])
-    //         console.log('JSON',treeToJSON(tree.rendered[1]))
-    //     }
-    // }, [pageContent])
+    useEffect(() => {
+        const tree = TestRenderer.create(container).toTree()
+        if (tree.props.children[1]){
+            const struct = treeToJSON(tree.rendered[1])
+            setPage2(renderNode(struct))
+        }
+    }, [pageContent])
 
     useEffect(() => {
         setPageContent(renderNode(structure.current, true))
     }, [])
 
     return (
-        <div className={styles.pageWrap}>
-            <div className={styles.editorWrap}>
-                <PageContext.Provider value={{structure, setPageContent}}>
-                    {container}
-                </PageContext.Provider>
-                <div 
-                    className={styles.dragArea}
-                    onDragOver={allowDrop} 
-                    onDrop={drop}
-                />
+        <>
+            <div className={styles.pageWrap}>
+                <div className={styles.editorWrap}>
+                    <PageContext.Provider value={{structure, setPageContent}}>
+                        {container}
+                    </PageContext.Provider>
+                    <div 
+                        className={styles.dragArea}
+                        onDragOver={allowDrop} 
+                        onDrop={drop}
+                    />
+                </div>
+                <div className={styles.sidebar}>
+                    {
+                        Object.keys(Components).map(key => (
+                            <span 
+                                key={key}
+                                className={styles.dragComponent}
+                                onDragStart={(e)=>drag(e, key)}
+                                draggable
+                            >
+                                {key}
+                            </span>
+                        ))
+                    }
+                </div>
             </div>
-            <div className={styles.sidebar}>
-                {
-                    Object.keys(Components).map(key => (
-                        <span 
-                            key={key}
-                            className={styles.dragComponent}
-                            onDragStart={(e)=>drag(e, key)}
-                            draggable
-                        >
-                            {key}
-                        </span>
-                    ))
-                }
+            <div className={styles.preview}>
+                <span>Clent preview:</span>
+                {page2}
             </div>
-        </div>
+        </>
     )
 }
