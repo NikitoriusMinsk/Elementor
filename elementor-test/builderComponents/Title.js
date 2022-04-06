@@ -3,30 +3,19 @@ import React, { useContext } from 'react'
 import { PageContext } from '../pages'
 import { handleDelete } from '../functions/handleDelete'
 import ControlButtons from '../components/controlButtons'
-import renderNode from '../functions/renderNode'
-import findChild from '../functions/findChild'
+import { onDragOver, onDrop } from '../functions/DragAndDrop'
 
-export default function Title({ children, edit, uuid, text }) {
+export default function Title({ children, edit, uuid }) {
     const context = useContext(PageContext)
 
-    function handleEdit(){
-        const text = prompt('Input text');
-        if (text){
-            const {child, parent} = findChild(context.structure.current, uuid)
-            child.props.text = text;
-            context.setPageContent(renderNode(context.structure.current, true))
-        }
-    }
-
     return (
-        <h1 className={styles.title}>
+        <h1 className={styles.title} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
             {
                 edit && <ControlButtons
                     onDelete={() => handleDelete(context, uuid)}
-                    onEdit={handleEdit}
                 />
             }
-            {text}
+            {children}
         </h1>
     )
 }
