@@ -82,6 +82,10 @@
     min-height: 25px;
     border: 1px solid orange;
 }
+.banner{
+    position: relative;
+    width: fit-content;
+}
 .edit{
     position: absolute;
     top: 0;

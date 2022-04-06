@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import { PageContext } from '../pages'
 import { handleDelete } from '../functions/handleDelete'
 import ControlButtons from '../components/controlButtons'
+import styles from '../styles/Home.module.css'
 
 export default function Banner({src, edit, uuid}) {
     const context = useContext(PageContext)
 
     return (
-        <div>
+        <div className={styles.banner}>
             {
                 edit && <ControlButtons
                     onDelete={() => handleDelete(context, uuid)}
