@@ -13,7 +13,7 @@ export default function renderNode(node, edit = false){
             {
                 ...node.props,
                 edit: edit,
-                key: node.props.uuid
+                key: `${node.props.uuid}${edit ? '-editor' : ''}`,
             }, 
             node.children && 
                 (

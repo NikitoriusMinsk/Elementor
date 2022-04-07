@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import React, { createContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, useEffect, useMemo, useRef, useState } from 'react'
 import renderNode from '../functions/renderNode'
 import treeToJSON from '../functions/treeToJSON'
 import TestRenderer from 'react-test-renderer'
@@ -12,10 +12,13 @@ const Components = Object.fromEntries(
     Object.entries(ComponentsImport).map(([key, value]) => [key.toLowerCase(), value])
 );
 
+const wrapperKey= uuid();
+
 const initialStructure = {
     name: 'wrapper',
     props: {
-        key: 'wrapper',
+        key: wrapperKey,
+        uuid: wrapperKey,
     },
     children: []
 }
@@ -25,8 +28,8 @@ export const PageContext = createContext()
 export default function Home() {
     const structure = useRef(initialStructure)
     const [pageContent, setPageContent] = useState()
-    const [page2, setPage2] = useState()
-    const container = <div className={styles.container}> {pageContent} </div>
+    const [preview, setPreview] = useState()
+    const container = useMemo(() => <div className={styles.container}> {pageContent} </div>, [pageContent])
 
     function allowDrop(e){
         e.preventDefault();
@@ -72,12 +75,13 @@ export default function Home() {
         const tree = TestRenderer.create(container).toTree()
         if (tree.props.children[1]){
             const struct = treeToJSON(tree.rendered[1])
-            setPage2(renderNode(struct))
+            setPreview(renderNode(struct), false)
         }
-    }, [pageContent])
+    }, [pageContent, container])
 
     useEffect(() => {
         setPageContent(renderNode(structure.current, true))
+        setPreview(renderNode(structure.current, false))
     }, [])
 
     return (
@@ -111,8 +115,10 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.preview}>
-                <span>Clent preview:</span>
-                {page2}
+                <span>Client preview:</span>
+                <div className={styles.editorWrap}>
+                    {preview}
+                </div>
             </div>
         </>
     )
