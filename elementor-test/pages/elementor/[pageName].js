@@ -24,7 +24,8 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const pages = await getPagesList()
+    let pages = await getPagesList()
+    pages = pages.map(pageName => pageName.replace('.json', ''));
     const paths = pages.map(pageName => ({ params: { pageName } }))
 
     return {
