@@ -10,11 +10,12 @@ export default function CustomPage({ page }) {
 }
 
 export async function getStaticProps({ params }) {
-    const pages = await (await fetch(`${process.env.API}/pages`, {method: 'GET'})).json()
+    const { pageName } = params;
+    const page = await (await fetch(`${process.env.API}/page?name=${pageName}`, {method: 'GET'})).json()
 
     return {
         props: {
-            page: pages[params.pageName],
+            page: page,
         },
         revalidate: 10
     }
@@ -22,7 +23,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     const pages = await (await fetch(`${process.env.API}/pages`, {method: 'GET'})).json()
-    const paths = Object.keys(pages).map(pageName => ({ params: { pageName } }))
+    const paths = pages.map(pageName => ({ params: { pageName } }))
 
     return {
         paths,

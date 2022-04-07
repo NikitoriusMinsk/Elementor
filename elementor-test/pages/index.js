@@ -49,6 +49,31 @@ export default function Home() {
         setPageContent(renderNode(structure.current, true));
     }
 
+    function handlePublish(){
+        const body = {
+            page: structure.current,
+            name: prompt('Page name:')
+        }
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }
+        fetch(`${process.env.API}/publish`, options)
+            .then(res => {
+                if(res.status === 200){
+                    alert('Page published!')
+                } else{
+                    alert('Error publishing page!')
+                }
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+
     useEffect(() => {
         const tree = TestRenderer.create(container).toTree()
         if (tree.props.children[1]){
@@ -87,6 +112,7 @@ export default function Home() {
                             </span>
                         ))
                     }
+                    <button onClick={handlePublish}>Publish</button>
                 </div>
             </div>
             <div className={styles.preview}>

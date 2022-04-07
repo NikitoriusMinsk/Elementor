@@ -70,7 +70,6 @@
 .content{
     position: relative;
     display: flex;
-    flex-direction: column;
     width: 100%;
     min-height: 25px;
     border: 1px solid orange;

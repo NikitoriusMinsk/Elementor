@@ -17,10 +17,19 @@ export default function index({ links }) {
 
 export async function getStaticProps({ params }) {
     const pages = await (await fetch(`${process.env.API}/pages`, {method: 'GET'})).json()
+    const links = pages.map(page => {
+        const pageName = page.replace('.json', '')
+
+        return { 
+            href: `/elementor/${pageName}`,
+            name: pageName 
+        }
+    })
+
 
     return {
         props: {
-            links: Object.keys(pages).map(pageName => ({ href: `/elementor/${pageName}`, name: pageName })),
+            links: links
         },
         revalidate: 10
     }
