@@ -5,6 +5,7 @@ To start the server:
 
     cd elementor-server
     npm install
+    create a 'pages' directory in the root of the server
     npm start
 
 To start the client:
