@@ -8,8 +8,12 @@ import { onDragOver, onDrop } from '../functions/DragAndDrop'
 export default function Title({ children, edit, uuid }) {
     const context = useContext(PageContext)
 
+    const styleOptions = {
+        border: edit ? '1px solid orange' : 'none',
+    }
+
     return (
-        <h1 className={styles.title} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
+        <h1 className={styles.title} style={styleOptions} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
             {
                 edit && <ControlButtons
                     onDelete={() => handleDelete(context, uuid)}

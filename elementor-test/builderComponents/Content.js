@@ -11,6 +11,7 @@ export default function Content({ children, edit, uuid, direction='column' }) {
     const context = useContext(PageContext)
     const styleOptions = {
         flexDirection: direction,
+        border: edit ? '1px solid orange' : 'none',
     }
 
     function handleEdit(){

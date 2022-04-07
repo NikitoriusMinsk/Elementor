@@ -8,8 +8,12 @@ import ControlButtons from '../components/controlButtons';
 export default function Header({ children, edit, uuid }) {
     const context = useContext(PageContext)
 
+    const styleOptions = {
+        border: edit ? '1px solid orange' : 'none',
+    }
+
     return (
-        <header className={styles.header} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
+        <header className={styles.header} style={styleOptions} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
             {
                 edit && <ControlButtons
                     onDelete={() => handleDelete(context, uuid)}

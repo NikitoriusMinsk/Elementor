@@ -9,6 +9,10 @@ import findChild from '../functions/findChild'
 export default function Text({ edit, uuid, text }) {
     const context = useContext(PageContext)
 
+    const styleOptions = {
+        border: edit ? '1px solid orange' : 'none',
+    }
+
     function handleEdit(){
         const text = prompt('Input text');
         if (text){
@@ -19,7 +23,7 @@ export default function Text({ edit, uuid, text }) {
     }
 
     return (
-        <span className={styles.text}>
+        <span className={styles.text} style={styleOptions}>
             {
                 edit && <ControlButtons
                     onDelete={() => handleDelete(context, uuid)}

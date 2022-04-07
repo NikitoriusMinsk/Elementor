@@ -8,8 +8,12 @@ import ControlButtons from '../components/controlButtons';
 export default function Footer({ children, edit, uuid }) {
     const context = useContext(PageContext)
 
+    const styleOptions = {
+        border: edit ? '1px solid orange' : 'none',
+    }
+
     return (
-        <footer className={styles.footer} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
+        <footer className={styles.footer} style={styleOptions} onDragOver={onDragOver} onDrop={(e) => onDrop(e, uuid, context)}>
             {
                 edit && <ControlButtons
                     onDelete={() => handleDelete(context, uuid)}
