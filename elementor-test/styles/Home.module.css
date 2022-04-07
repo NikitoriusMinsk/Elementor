@@ -92,4 +92,5 @@
 .edit span{
     border: 1px solid red;
     cursor: pointer;
+    background-color: white;
 }
