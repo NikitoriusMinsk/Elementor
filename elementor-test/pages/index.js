@@ -29,7 +29,6 @@ export default function Home() {
     const structure = useRef(initialStructure)
     const [pageContent, setPageContent] = useState()
     const [preview, setPreview] = useState()
-    const container = useMemo(() => <div className={styles.container}> {pageContent} </div>, [pageContent])
 
     function allowDrop(e){
         e.preventDefault();
@@ -72,12 +71,8 @@ export default function Home() {
     }
 
     useEffect(() => {
-        const tree = TestRenderer.create(container).toTree()
-        if (tree.props.children[1]){
-            const struct = treeToJSON(tree.rendered[1])
-            setPreview(renderNode(struct), false)
-        }
-    }, [pageContent, container])
+        setPreview(renderNode(structure.current), false)
+    }, [pageContent])
 
     useEffect(() => {
         setPageContent(renderNode(structure.current, true))
@@ -89,7 +84,9 @@ export default function Home() {
             <div className={styles.pageWrap}>
                 <div className={styles.editorWrap}>
                     <PageContext.Provider value={{structure, setPageContent}}>
-                        {container}
+                        <div className={styles.container}>
+                            {pageContent}
+                        </div>
                     </PageContext.Provider>
                     <div 
                         className={styles.dragArea}

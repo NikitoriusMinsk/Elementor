@@ -16,3 +16,16 @@ export default function treeToJSON(element){
         return result;
     }
 }
+
+
+// why
+// const render = TestRenderer.create(container)
+//         const tree = render.toTree()
+//         render.unmount();
+//         if (tree.props.children[1]){
+//             const struct = treeToJSON(tree.rendered[1])
+//             console.log(renderNode(struct, false))
+//             setPreview(renderNode(struct), false)
+//         }
+// const container = useMemo(() => <div className={styles.container}> {pageContent} </div>, [pageContent])
+// const previewContainer = useMemo(() => <div className={styles.container}> {preview} </div>, [preview])
