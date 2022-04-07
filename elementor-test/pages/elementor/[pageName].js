@@ -1,4 +1,6 @@
 import React from 'react'
+import getPage from '../../requests/getPage';
+import getPagesList from '../../requests/getPagesList';
 import renderNode from '/functions/renderNode'
 
 export default function CustomPage({ page }) {
@@ -11,7 +13,7 @@ export default function CustomPage({ page }) {
 
 export async function getStaticProps({ params }) {
     const { pageName } = params;
-    const page = await (await fetch(`${process.env.API}/page?name=${pageName}`, {method: 'GET'})).json()
+    const page = await getPage(pageName);
 
     return {
         props: {
@@ -22,7 +24,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const pages = await (await fetch(`${process.env.API}/pages`, {method: 'GET'})).json()
+    const pages = await getPagesList()
     const paths = pages.map(pageName => ({ params: { pageName } }))
 
     return {

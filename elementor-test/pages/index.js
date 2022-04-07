@@ -5,6 +5,8 @@ import treeToJSON from '../functions/treeToJSON'
 import TestRenderer from 'react-test-renderer'
 import {v4 as uuid} from 'uuid'
 import * as ComponentsImport from '../builderComponents'
+import publishPage from '../requests/publishPage'
+import getPage from '../requests/getPage'
 
 const Components = Object.fromEntries(
     Object.entries(ComponentsImport).map(([key, value]) => [key.toLowerCase(), value])
@@ -50,28 +52,20 @@ export default function Home() {
     }
 
     function handlePublish(){
-        const body = {
-            page: structure.current,
-            name: prompt('Page name:')
+        publishPage(prompt('Page name'), structure.current)
+            .then(() => alert('Page published'))
+            .catch(() => alert('Error publishing page'))
+    }
+
+    async function handleLoad(){
+        const page = await getPage(prompt('Page name'))
+        if(page){
+            structure.current = page
+            setPageContent(renderNode(structure.current, true))
+            setPage2(renderNode(structure.current, false))
+        } else {
+            alert('Page not found')
         }
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        }
-        fetch(`${process.env.API}/publish`, options)
-            .then(res => {
-                if(res.status === 200){
-                    alert('Page published!')
-                } else{
-                    alert('Error publishing page!')
-                }
-            })
-            .catch(err => {
-                console.error(err)
-            })
     }
 
     useEffect(() => {
@@ -113,6 +107,7 @@ export default function Home() {
                         ))
                     }
                     <button onClick={handlePublish}>Publish</button>
+                    <button onClick={handleLoad}>Load</button>
                 </div>
             </div>
             <div className={styles.preview}>

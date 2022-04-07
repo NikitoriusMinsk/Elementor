@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import getPagesList from '../../requests/getPagesList'
 
 export default function index({ links }) {
   return (
@@ -16,7 +17,7 @@ export default function index({ links }) {
 }
 
 export async function getStaticProps({ params }) {
-    const pages = await (await fetch(`${process.env.API}/pages`, {method: 'GET'})).json()
+    const pages = await getPagesList()
     const links = pages.map(page => {
         const pageName = page.replace('.json', '')
 

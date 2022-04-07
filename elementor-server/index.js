@@ -15,8 +15,8 @@ app.get('/pages', (req, res) => {
 })
 
 app.get('/page', (req, res) => {
-    console.log(`GET /page`)
     const { name } = req.query;
+    console.log(`GET /page ${name}`)
     const page = fs.readFileSync(`./pages/${name}.json`, 'utf8')
     res.send(page)
 })
