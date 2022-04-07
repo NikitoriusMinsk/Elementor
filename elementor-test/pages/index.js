@@ -64,7 +64,7 @@ export default function Home() {
         if(page){
             structure.current = page
             setPageContent(renderNode(structure.current, true))
-            setPage2(renderNode(structure.current, false))
+            setPreview(renderNode(structure.current, false))
         } else {
             alert('Page not found')
         }
